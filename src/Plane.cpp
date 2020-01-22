@@ -8,8 +8,8 @@ bool Plane::intersect(
   // Replace with your code here:
   auto e = ray.origin;
   auto d = ray.direction;
-  auto p = this.point;
-  auto normal = this.normal;
+  auto p = this->point;
+  auto normal = this->normal;
 
   double numerator = (p-e).dot(normal);
   double denumerator = d.dot(normal);
