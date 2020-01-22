@@ -9,9 +9,9 @@ bool Triangle::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  Eigen::Vector3d a = std::get<0>(this.corners);
-  Eigen::Vector3d b = std::get<1>(this.corners);
-  Eigen::Vector3d c = std::get<2>(this.corners);
+  Eigen::Vector3d a = std::get<0>(this->corners);
+  Eigen::Vector3d b = std::get<1>(this->corners);
+  Eigen::Vector3d c = std::get<2>(this->corners);
 
   Eigen::Vector3d q = b-a;
   Eigen::Vector3d p = c-a;
