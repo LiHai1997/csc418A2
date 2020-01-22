@@ -18,7 +18,7 @@ void viewing_ray(
   y_cor = -(y_cor - 0.5) * camera.height;
 
   ray.origin = camera.e;
-  ray.direction = (x_cor * camera.u) + (y_cor * camera.v) - (camera.v * camera.w);
+  ray.direction = (x_cor * camera.u) + (y_cor * camera.v) - (camera.d * camera.w);
 
 
   ////////////////////////////////////////////////////////////////////////////
