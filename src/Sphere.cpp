@@ -8,10 +8,10 @@ bool Sphere::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  double radius = this.radius;
+  double radius = this->radius;
   Eigen::Vector3d e = ray.origin;
   Eigen::Vector3d d = ray.direction;
-  Eigen::Vector3d o = this.center;
+  Eigen::Vector3d o = this->center;
 
   double a = d.dot(d);
   double b = d.dot(e-o);
