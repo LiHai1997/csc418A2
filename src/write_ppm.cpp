@@ -31,10 +31,21 @@ bool write_ppm(
 	  file << width << " " << height << std::endl << "255" << std::endl;
 	
 	  // write data in
-	  int total_size = width * height * num_channels;
-	  for (int i = 0; i < total_size; i++) {
-		  file << data[i];
-	  }
+	  // int total_size = width * height * num_channels;
+	  // for (int i = 0; i < total_size; i++) {
+		 //  file << data[i];
+	  // }
+	  int index;
+      for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            index = num_channels * (i * width + j);
+            if (num_channels == 1)
+                file << (double) data[index] << " ";
+            else
+                file << (double)data[index] << " " << (double)data[index + 1] << " " << (double)data[index + 2] << " ";
+        }
+        if (num_channels == 3) file << std::endl;
+      }
 
 	  file.close();
 	  return true;
