@@ -21,20 +21,16 @@ bool write_ppm(
 	  }
 
 	  if (num_channels == 3) {
-		  // P6 is RGB image in ppm file
+		  // P3 is RGB image in ppm file
 		  file << "P3" << std::endl;
 	  }
 	  else {
-		  // P5 is grayscale in ppm file
+		  // P2 is grayscale in ppm file
 		  file << "P2" << std::endl;
 	  }
 	  file << width << " " << height << std::endl << "255" << std::endl;
 	
-	  // write data in
-	  // int total_size = width * height * num_channels;
-	  // for (int i = 0; i < total_size; i++) {
-		 //  file << data[i];
-	  // }
+	 
 	  int index;
       for(int i = 0; i < height; i++) {
         for(int j = 0; j < width; j++) {

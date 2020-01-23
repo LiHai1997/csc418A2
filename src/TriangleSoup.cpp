@@ -8,8 +8,8 @@ bool TriangleSoup::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  int tt;
-  return first_hit(ray, min_t, this->triangles, tt, t, n);
+  int hit_id;
+  return first_hit(ray, min_t, triangles, hit_id, t, n);
   ////////////////////////////////////////////////////////////////////////////
 }
 
