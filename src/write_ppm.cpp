@@ -12,9 +12,9 @@ bool write_ppm(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code from computer-graphics-raster-images
-  std::ofstream file;
+  std::ofstream file(filename);
   try {
-	  file.open(filename);
+	  
 	  // return false if the file can not open
 	  if (file.fail()) {
 		  return false;
