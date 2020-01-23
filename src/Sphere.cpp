@@ -8,14 +8,14 @@ bool Sphere::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  double radius = this->radius;
+  double r = radius;
   Eigen::Vector3d e = ray.origin;
   Eigen::Vector3d d = ray.direction;
-  Eigen::Vector3d o = this->center;
+  Eigen::Vector3d o = center;
 
   double a = d.dot(d);
   double b = d.dot(e-o);
-  double c = (e-o).dot(e-o) - pow(radius,2);
+  double c = (e-o).dot(e-o) - pow(r,2);
 
   double discriminant = pow(b,2) - a * c;
 
@@ -23,26 +23,34 @@ bool Sphere::intersect(
   {
   	return false;
   }
-  else if (discriminant >= 0 && discriminant <= 1e-6)
+  else 
   {
-  	t = -b/a;
-  }
-  else
-  {
+    Eigen::Vector3d p;
+    double r1 = (-b + sqrt(discriminant))/a;
+    double r2 = (-b + sqrt(discriminant))/a;
+    if (r2 >= min_t)
+    {
+      t = r2;
+      p = e + t * d;
+      n = (p-o)/r;
+      return true;
+    }
+    else
+    {
+      if (r1 >= min_t)
+      {
+        t = r1;
+        p = e + t * d;
+        n = (p-c)/r;
+        return true;
+      }
+      else
+      {
+        return false;
+      }
 
-  	t = (-b - sqrt(discriminant))/a;
-  	if (t < min_t)
-  	{
-  		t = (-b + sqrt(discriminant))/a;
-  	}
+    }
   }
-  if (t<min_t)
-  {
-  	return false;
-  }
-  auto intersection = e + t*d;
-  n = (intersection-o).normalized();
-  return true;
   ////////////////////////////////////////////////////////////////////////////
 }
 
