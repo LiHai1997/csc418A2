@@ -14,7 +14,7 @@ bool write_ppm(
   // Replace with your code from computer-graphics-raster-images
   std::ofstream file;
   try {
-	  file.open(filename, std::ios::binary);
+	  file.open(filename);
 	  // return false if the file can not open
 	  if (file.fail()) {
 		  return false;
