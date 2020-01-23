@@ -6,31 +6,18 @@ bool Plane::intersect(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
-  auto e = ray.origin;
-  auto d = ray.direction;
-  auto p = this->point;
-  auto normal = this->normal;
+  
 
-  double numerator = (p-e).dot(normal);
-  double denumerator = d.dot(normal);
-
-  if (denumerator >= 0 && denumerator <= 1e-6)
+  // ray is parallel to plane 
+  if (ray.direction.dot(normal) == 0)
   {
-  	if (numerator >= 0 && numerator <= 1e-6)
-  	{
-  		t = min_t;
-  		n = normal;
-  		return true;
-  	}
-  	else
-  	{
-  		return false;
-  	}
-
+    return false;
   }
-  t = numerator/denumerator;
-  if (t >= min_t)
+
+  double tmp = (point - ray.origin).dot(normal)/(ray.direction.dot(normal));
+  if (tmp >= min_t)
   {
+    t = tmp;
   	n = normal;
   	return true;
   }

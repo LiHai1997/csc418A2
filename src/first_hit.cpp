@@ -13,19 +13,19 @@ bool first_hit(
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code here:
   
-  double cloest = std::numeric_limits<double>::infinity();
-  double tmp_t;
-  Eigen::Vector3d tmp_n;
+  double t_temp = std::numeric_limits<double>::infinity();
+  double distance;
+  Eigen::Vector3d n_temp;
   hit_id = -1;
   for (int i = 0; i < objects.size(); ++i)
   {
-    if (objects[i]->intersect(ray, min_t, tmp_t, tmp_n))
+    if (objects[i]->intersect(ray, min_t, distance, n_temp))
     {
-      if (tmp_t < cloest)
+      if (distance < t_temp)
       {
-        cloest = tmp_t;
-        t = tmp_t;
-        n = tmp_n;
+        t_temp = distance;
+        t = distance;
+        n = n_temp;
         hit_id = i;
       }
     }
