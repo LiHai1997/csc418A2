@@ -12,82 +12,50 @@ bool write_ppm(
 {
   ////////////////////////////////////////////////////////////////////////////
   // Replace with your code from computer-graphics-raster-images
-  // std::ofstream file(filename);
-  // try {
-	  
-	 //  // return false if the file can not open
-	 //  if (file.fail()) {
-		//   return false;
-	 //  }
-
-	 //  if (num_channels == 3) {
-		//   // P6 is RGB image in ppm file
-		//   file << "P3" << std::endl;
-	 //  }
-	 //  else {
-		//   // P5 is grayscale in ppm file
-		//   file << "P2" << std::endl;
-	 //  }
-	 //  file << width << " " << height << std::endl << "255" << std::endl;
-	
-	 //  // write data in
-	 //  // int total_size = width * height * num_channels;
-	 //  // for (int i = 0; i < total_size; i++) {
-		//  //  file << data[i];
-	 //  // }
-	 //  int index;
-  //     for(int i = 0; i < height; i++) {
-  //       for(int j = 0; j < width; j++) {
-  //           index = num_channels * (i * width + j);
-  //           if (num_channels == 1)
-  //               file << (double) data[index] << " ";
-  //           else
-  //               file << (double)data[index] << " " << (double)data[index + 1] << " " << (double)data[index + 2] << " ";
-  //       }
-  //       if (num_channels == 3) file << std::endl;
-  //     }
-
-	 //  file.close();
-	 //  return true;
-  // }
-  // catch (int e) {
-	 //  if (file.is_open()) {
-		//   file.close();
-	 //  }
-	 //  return false;
-  // }
-
-	assert(
-    (num_channels == 3 || num_channels ==1 ) &&
-    ".ppm only supports RGB or grayscale images");
-
   std::ofstream file(filename);
-  try{
-    if (!file.is_open()) return false;
+  try {
+	  
+	  // return false if the file can not open
+	  if (file.fail()) {
+		  return false;
+	  }
 
-    if (num_channels == 3){
-        file << "P3" << std::endl << width << " " << height << std::endl << "255" << std::endl;
-    }else{
-        file << "P2" << std::endl << width << " " << height << std::endl << "255" << std::endl;
-    }
+	  if (num_channels == 3) {
+		  // P6 is RGB image in ppm file
+		  file << "P3" << std::endl;
+	  }
+	  else {
+		  // P5 is grayscale in ppm file
+		  file << "P2" << std::endl;
+	  }
+	  file << width << " " << height << std::endl << "255" << std::endl;
+	
+	  // write data in
+	  int total_size = width * height * num_channels;
+	  for (int i = 0; i < total_size; i++) {
+		  file << data[i];
+	  }
+	  // int index;
+   //    for(int i = 0; i < height; i++) {
+   //      for(int j = 0; j < width; j++) {
+   //          index = num_channels * (i * width + j);
+   //          if (num_channels == 1)
+   //              file << (double) data[index] << " ";
+   //          else
+   //              file << (double)data[index] << " " << (double)data[index + 1] << " " << (double)data[index + 2] << " ";
+   //      }
+   //      if (num_channels == 3) file << std::endl;
+   //    }
 
-    int index;
-    for(int i = 0; i < height; i++) {
-        for(int j = 0; j < width; j++) {
-            index = num_channels * (i * width + j);
-            if (num_channels == 1)
-                file << (double) data[index] << " ";
-            else
-                file << (double)data[index] << " " << (double)data[index + 1] << " " << (double)data[index + 2] << " ";
-        }
-        if (num_channels == 3) file << std::endl;
-    }
-    file.close();
-    return true;
+	  file.close();
+	  return true;
   }
-  catch (int e){
-    if (file.is_open()) file.close();
-    return false;
+  catch (int e) {
+	  if (file.is_open()) {
+		  file.close();
+	  }
+	  return false;
   }
+
   ////////////////////////////////////////////////////////////////////////////
 }
