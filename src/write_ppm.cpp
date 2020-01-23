@@ -22,11 +22,11 @@ bool write_ppm(
 
 	  if (num_channels == 3) {
 		  // P6 is RGB image in ppm file
-		  file << "P6" << std::endl;
+		  file << "P3" << std::endl;
 	  }
 	  else {
 		  // P5 is grayscale in ppm file
-		  file << "P5" << std::endl;
+		  file << "P2" << std::endl;
 	  }
 	  file << width << " " << height << std::endl << "255" << std::endl;
 	
