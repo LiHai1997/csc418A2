@@ -41,7 +41,7 @@ bool Sphere::intersect(
       {
         t = r1;
         p = e + t * d;
-        n = (p-c)/r;
+        n = (p-o)/r;
         return true;
       }
       else
