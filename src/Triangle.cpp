@@ -15,7 +15,7 @@ bool Triangle::intersect(
 
   Eigen::Vector3d q = b-a;
   Eigen::Vector3d p = c-a;
-  Eigen::Vector3d triangle_n = q.cross(p).normalized();
+  Eigen::Vector3d triangle_n = (q).cross(p).normalized();
 
   auto plane = new Plane();
   plane->point = a;
@@ -32,7 +32,7 @@ bool Triangle::intersect(
   	Eigen::Vector3d x1 = point-b;
   	Eigen::Vector3d x2 = point-c;
 
-  	if (n.dot(e0.cross(x0)) > 0 && n.dot(e1.cross(x1)) && n.dot(e2.cross(x2)))
+  	if (n.dot(e0.cross(x0)) > 0 && n.dot(e1.cross(x1)) > 0 && n.dot(e2.cross(x2)) > 0)
   	{
   		return true;
   	}

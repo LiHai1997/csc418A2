@@ -29,7 +29,7 @@ bool Plane::intersect(
 
   }
   t = numerator/denumerator;
-  if (t > min_t)
+  if (t >= min_t)
   {
   	n = normal;
   	return true;
